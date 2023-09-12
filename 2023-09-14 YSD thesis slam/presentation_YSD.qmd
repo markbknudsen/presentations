@@ -31,8 +31,8 @@ Assume a binary treatment $A \in \{0, 1\}$ that is given at time $t = 0$. Wish t
 
 For each person, suppose there exists two *potential outcomes* $T^0$ and $T^1$:
 
-- $T^0$ is the survival time if the person receives treatment.
-- $T^1$ is the survival time if the person *does not* receive treatment.
+- $T^0$ is the survival time if the person *does not* receive treatment.
+- $T^1$ is the survival time if the person receives treatment.
 
 . . .
 
@@ -149,15 +149,24 @@ Consider a case where treatment is a binary counting process $A(t)$ that starts 
 
 ::: {.fragment fragment-index=1}
 
-Covariates $X(t)$ are also time-dependent. Can generalize to a weight *process*
-$$
-W_i(t) = \frac{1}{\lambda^A(\tau \mid \mathcal{F}_{\tau-})^{A(t)} \mathrm{e}^{-\Lambda^A(t \wedge \tau)}}
-$$
-where $\lambda^A$ is the hazard/rate of treatment initiation and $\Lambda^A(t) = \int_0^t \lambda^A(s \mid \mathcal{F}_{s-}) \mathrm{d} s$.
+Covariates $X(t)$ are also time-dependent.
 
 :::
 
 ::: {.fragment fragment-index=2}
+
+Can generalize to a weight *process*
+$$
+W_i(t) = \frac{1}{\lambda^A(\tau \mid \mathcal{F}_{\tau-})^{A(t)} \mathrm{e}^{-\Lambda^A(t \wedge \tau)}}
+$$
+where $\lambda^A$ is the hazard/rate of treatment initiation and 
+$$
+\Lambda^A(t) = \int_0^t \lambda^A(s \mid \mathcal{F}_{s-}) \mathrm{d} s
+$$
+
+:::
+
+::: {.fragment fragment-index=3}
 
 The processes $W_i(t)$ are quite nice (exponential martingales), and can be estimated from data.
 
@@ -167,7 +176,7 @@ The processes $W_i(t)$ are quite nice (exponential martingales), and can be esti
 
 ::: {.column width="50%"}
 
-::: {.fragment fragment-index=3}
+::: {.fragment fragment-index=4}
 
 ![](weights_example.png)
 
@@ -208,3 +217,13 @@ Weighting does not change the conclusion much. But we did not have enough inform
 :::
 
 ::::
+
+## {.center}
+
+::: {.r-fit-text}
+Thank you!
+:::
+
+::: {.r-fit-text}
+And good luck when you write your thesis.
+:::
