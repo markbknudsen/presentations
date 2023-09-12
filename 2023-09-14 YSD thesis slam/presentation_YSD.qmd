@@ -1,0 +1,102 @@
+---
+title: "Causal Inference for Observational Longitudinal Survival Data"
+author: "Mark Bech Knudsen"
+format: 
+  revealjs:
+    incremental: true
+    slide-number: true
+    embed-resources: true
+    smaller: true
+    theme: [default, theme.scss]
+---
+
+## Context
+
+Thesis written in blocks 1 & 2 autumn 2022, supervised by Torben Martinussen & Helene Rytgaard @ Biostatistics KU.
+
+. . .
+
+Thesis explores 3 topics relating to causal inference for non-randomized survival data:
+
+- Can we interpret hazard ratios causally?
+- A problem with Markov models for survival data.
+- <p style="color:red;">Continuous-time inverse probability weighting.</p>
+
+## Defining causal effects
+
+Assume a binary treatment $A \in \{0, 1\}$ that is given at time $t = 0$. Wish to infer the *effect of treatment on survival*.
+
+. . .
+
+For each person, suppose there exists two *potential outcomes* $T^0$ and $T^1$:
+
+- $T^0$ is the survival time if the person receives treatment.
+- $T^1$ is the survival time if the person *does not* receive treatment.
+
+. . .
+
+The effect of treatment could then be defined as
+$$
+P(T^1 > t) - P(T^0 > t)
+$$
+i.e. how much more likely is it for the person to survive if they receive treatment vs. if they do not?
+
+. . .
+
+Or on the population scale: What would the survival rate be if we treated everyone vs. if we did not treat anyone?
+
+. . .
+
+Different from the conditional association $P(T > t \mid A = 1) - P(T > t \mid A = 0)$.
+
+## Causal vs. conditional effects
+
+![](YSD_causation_association.png){fig-align="center"}
+
+## Randomized treatment
+
+Assume a randomized treatment $A$. Then the subpopulation with $A = a$ is *representative* of what would have happened to the rest of the population, *had they been treated*.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+
+Scale up subpopulation to full population size with weights
+$$
+W_i^a = \frac{1(A_i = a)}{P(A = a)}
+$$
+
+:::
+
+::: {.fragment fragment-index=3}
+
+An estimate of the probability of survival, had everyone received treatment $a$:
+$$
+P(T^a > t) = \frac{1}{n} \sum_{i=1}^n W_i^a 1(T_i > t)
+$$
+
+:::
+
+::: {.fragment fragment-index=4}
+
+The $W_i^a$ are referred to as *inverse probability of treatment weights (IPTW)*.
+
+:::
+
+:::
+
+::: {.column width="50%" .fragment fragment-index=2}
+
+![](YSD_IPW_RCT.png){fig-align="center"}
+
+:::
+
+::::
+
+## Confounding
+
+
+
+## Continuous-time

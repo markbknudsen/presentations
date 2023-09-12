@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+
+// fonts
+$presentation-font-size-root: 40px !default;
+$font-family-sans-serif: "Microsoft New Tai Lue", "Helvetica";
+// colors
+
+// headings
+
+/*-- scss:rules --*/
+
+.math.inline {
+  font-size: 100%;
+}
+.math.display {
+  font-size: 80%;
+}
