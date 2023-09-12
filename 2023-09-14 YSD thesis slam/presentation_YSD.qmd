@@ -6,6 +6,7 @@ format:
     incremental: true
     slide-number: true
     embed-resources: true
+    pdf-separate-fragments: true
     smaller: true
     theme: [default, theme.scss]
 ---
@@ -97,6 +98,113 @@ The $W_i^a$ are referred to as *inverse probability of treatment weights (IPTW)*
 
 ## Confounding
 
+Suppose now that a *confounder* $X \in \{0, 1\}$ (low/high risk) affects both treatment and outcome (non-randomized data).
 
+:::: {.columns}
 
-## Continuous-time
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+
+If $X$ is the *only* confounder, then we still have representativity *within levels of $X$*.
+
+:::
+
+::: {.fragment fragment-index=3}
+
+So we assign different weights depending on $X$:
+$$
+W_i^a = \frac{1(A_i = a)}{P(A = a \mid X_i)}
+$$
+
+::: {.fragment fragment-index=4}
+
+This works regardless of the dimension of $X$, and also for continuous covariates.
+
+:::
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=2}
+
+![](YSD_confounding.png){fig-align="center"}
+
+:::
+
+:::
+
+::::
+
+## Time-varying treatment
+
+Consider a case where treatment is a binary counting process $A(t)$ that starts at 0 and jumps to 1 at time $\tau$ when a treatment is undertaken (e.g. surgery).
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+
+Covariates $X(t)$ are also time-dependent. Can generalize to a weight *process*
+$$
+W_i(t) = \frac{1}{\lambda^A(\tau \mid \mathcal{F}_{\tau-})^{A(t)} \mathrm{e}^{-\Lambda^A(t \wedge \tau)}}
+$$
+where $\lambda^A$ is the hazard/rate of treatment initiation and $\Lambda^A(t) = \int_0^t \lambda^A(s \mid \mathcal{F}_{s-}) \mathrm{d} s$.
+
+:::
+
+::: {.fragment fragment-index=2}
+
+The processes $W_i(t)$ are quite nice (exponential martingales), and can be estimated from data.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=3}
+
+![](weights_example.png)
+
+:::
+
+:::
+
+::::
+
+## A data example
+
+Observational data ($n = 601$) from oncologists at Rigshospitalet.
+
+:::: {.columns}
+
+::: {.column width="50%" .fragment fragment-index=1}
+
+::: {.nonincremental}
+
+- $T$ time from diagnosis of incurable throat cancer to death.
+- $A(t)$ insertion of metalic tube (stent) into throat.
+- A bunch of covariates $X(t)$, mostly measured at baseline.
+
+::: 
+
+::: {.fragment fragment-index=3}
+
+Weighting does not change the conclusion much. But we did not have enough information about *time-dependent* confounders.
+
+:::
+
+:::
+
+::: {.column width="50%" .fragment fragment-index=2}
+
+![](KM_example.png)
+
+:::
+
+::::
