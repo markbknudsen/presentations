@@ -2,10 +2,11 @@
 
 // fonts
 $presentation-font-size-root: 40px !default;
-$font-family-sans-serif: "Microsoft New Tai Lue", "Helvetica";
+$font-family-sans-serif: "Microsoft New Tai Lue", "Helvetica", sans-serif !default;
 // colors
 
 // headings
+$presentation-heading-font: "Microsoft New Tai Lue", "Helvetica", sans-serif !default;
 
 /*-- scss:rules --*/
 

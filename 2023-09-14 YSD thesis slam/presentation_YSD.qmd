@@ -8,7 +8,7 @@ format:
     embed-resources: true
     pdf-separate-fragments: true
     smaller: true
-    theme: [default, theme.scss]
+    theme: [simple, theme.scss]
 ---
 
 ## Context
