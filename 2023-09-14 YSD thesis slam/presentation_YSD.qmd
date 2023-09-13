@@ -19,9 +19,9 @@ Thesis written in blocks 1 & 2 autumn 2022, supervised by Torben Martinussen & H
 
 Thesis explores 3 topics relating to causal inference for non-randomized survival data:
 
-- Can we interpret hazard ratios causally?
-- A problem with Markov models for survival data.
-- <p style="color:red;">Continuous-time inverse probability weighting.</p>
+- Do hazard ratio estimates from the Cox model have a causal interpretation for a time-dependent treatment?
+- A problem with Markov models for survival data with time-dependent covariates.
+- <p style="color:red;">Causal inference in continuous-time using inverse probability of treatment weights.</p>
 
 ## Defining causal effects
 
@@ -106,7 +106,7 @@ Suppose now that a *confounder* $X \in \{0, 1\}$ (low/high risk) affects both tr
 
 ::: {.fragment fragment-index=1}
 
-If $X$ is the *only* confounder, then we still have representativity *within levels of $X$*.
+If $X$ is the *only* confounder, then we still have representativity *within levels of $X$*. So we can pretend randomized treatment within levels of $X$.
 
 :::
 
